@@ -13,9 +13,9 @@ public class Control {
 		return Typing_gameDAO.getInstance().read();
 	}
 	
-	// 랭킹 입력?
-	public RangkingDTO(0 , int ss) {
-		return Typing_gameDAO.getInstance().Rangking(dto)
-	};
+	// 랭킹 
+	public void Rangking(int ss) {
+		return Typing_gameDAO.getInstance().Rangking( ss );
+	}
 	
 }

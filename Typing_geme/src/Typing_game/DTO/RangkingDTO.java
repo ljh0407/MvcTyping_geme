@@ -12,6 +12,7 @@ public class RangkingDTO {
 		this.ss = ss;
 	}
 
+	// 메소드
 
 	public int getMno() {
 		return mno;
@@ -21,7 +22,6 @@ public class RangkingDTO {
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
-	// 메소드
 
 	public int getSs() {
 		return ss;

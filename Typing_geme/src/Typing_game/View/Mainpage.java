@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import Typing_game.Controller.Control;
 import Typing_game.DTO.QuizDTO;
+import Typing_game.DTO.RangkingDTO;
 public class Mainpage {
 
 	Scanner scanner = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class Mainpage {
 			
 			if( ch == 1) {}
 			else if ( ch == 2 ) {quiz();}
-			else if ( ch == 3 ) {}
+			else if ( ch == 3 ) {Rangking();}
 			
 		}
 		
@@ -68,17 +69,23 @@ public class Mainpage {
 			
 			System.out.println("문제 끝" + score+"점" );
 				
-			//랭킹순위
+	} // 퀴즈출력 end
 			
 			
 			
 				
 				
 				
-			} // 퀴즈출력 end
 		
+	//랭킹순위
 	
-	void Rangking() {}
+	void Rangking() {
+		
+		System.out.println("순위\t점수 : "); int mno = scanner.nextInt();
+		System.out.println( mno  );	int ss = scanner.nextInt();
+		
+		
+	} // Rangking end
 	
 	}
 	

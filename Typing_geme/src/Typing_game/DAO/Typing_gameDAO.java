@@ -56,12 +56,12 @@ public class Typing_gameDAO {
 
 	
 	// 4. 랭킹보드
-	boolean Rangking(RangkingDTO dto) {
+	boolean Rangking(RangkingDTO rdto) {
 		String sql = "insert into score values(null , ?)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getSs());
-			ps.executeUpdate(); return true;
+			ps.setInt(1, rdto.getSs());
+			ps.executeQuery(); return true;
 		} catch (Exception e) {
 			System.out.println("DB오류 " + e);
 			return false;
