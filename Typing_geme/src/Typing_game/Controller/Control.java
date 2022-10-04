@@ -15,7 +15,7 @@ public class Control {
 	
 	// 랭킹 
 	public void Rangking(int ss) {
-		return Typing_gameDAO.getInstance().Rangking( ss );
+		//return Typing_gameDAO.getInstance().Rangking( ss );
 	}
 	
 }
