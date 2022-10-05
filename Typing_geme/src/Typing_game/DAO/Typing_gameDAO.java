@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import Typing_game.Controller.GControl;
 import Typing_game.DTO.QuizDTO;
 import Typing_game.DTO.RangkingDTO;
 
@@ -102,13 +103,40 @@ public class Typing_gameDAO {
 			ps.setString(1, mid);
 			ps.setString(2, pw);
 			rs= ps.executeQuery();
-			if(rs.next()) return true;
+			if(rs.next() ) {
+				GControl.getInstance().setLoginMno(rs.getInt(1));
+				return true;
+			}
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
 
+	public boolean idcheck( String mid) {
+		String sql = "select * from member where mid =?";
+		try {
+			ps= con.prepareStatement(sql);
+			ps.setString(1, mid);
+			rs= ps.executeQuery();
+			if( rs.next()) {return true;}
+			
+			GControl.getInstance().setLoginMno(rs.getInt(1));
+			
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
 
-
-
+	public boolean 회원탈퇴() {
+		String sql = "delete from member where mno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, GControl.getInstance().getLoginMno());
+			ps.executeUpdate(); return true;
+			
+		} catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	
+	
 }
 
