@@ -90,7 +90,6 @@ public class Mainpage {
 		while (true) {
 			System.out.println("==============타자게임=============");
 
-			System.out.println("1.로그아웃\t2.게임하기3.랭킹순위");
 
 			System.out.println("1.로그아웃 2.게임하기 3.랭킹순위 5.회원탈퇴");
 

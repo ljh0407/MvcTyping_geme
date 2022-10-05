@@ -37,7 +37,7 @@ public class Typing_gameDAO {
 
 	//private Typing_gameDAO() {}
 	
-	// 1. 회원가입
+	// 로그인
 	public boolean 로그인(String mid, String pw) {
 		
 		String sql = "select * from member where mid = ? and pw = ?";
@@ -72,7 +72,7 @@ public class Typing_gameDAO {
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
-	
+	// 회원탈퇴
 	public boolean 회원탈퇴() {
 		String sql = "delete from member where mno = ?";
 		try {
@@ -85,7 +85,7 @@ public class Typing_gameDAO {
 	}
 	
 	
-	// 2. 회원가입 출력
+	//  회원가입 
 	
 	public boolean 회원가입(SginupDTO Dto) {
 		
@@ -103,11 +103,7 @@ public class Typing_gameDAO {
 	}
 	
 	// 3. 문제출력
-		/*
-		 * 여러가지 방법이 있어요... 가장 쉬운방법이 db에서 문제 가져올때 랜덤이라는 키워드를 사용합니다.. 
-		 * 	1. rand();
-		 * 	
-		 */
+		
 	
 	public ArrayList<QuizDTO> read (){
 		ArrayList<QuizDTO> list = new ArrayList<>();
@@ -149,7 +145,7 @@ public class Typing_gameDAO {
 	}
 	
 	// 5. 점수저장 
-	public boolean scoresave(int score) {
+	public boolean scoresave( int score) {
 		
 		String sql = "insert into score values(?,?)";
 		try {
