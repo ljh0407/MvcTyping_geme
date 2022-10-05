@@ -101,6 +101,36 @@ public class Typing_gameDAO {
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
+	// 아이디찾기
+	public String 아이디찾기(String mname , String pw) {
+		String sql = "select * from member where mname = ? and pw = ?";
+	try {
+		ps = con.prepareStatement(sql);
+		ps.setString(1, mname);
+		ps.setString(2, pw);
+		rs=ps.executeQuery();
+		if(rs.next()) {return rs.getString(2);}
+		
+	}catch (Exception e) {System.out.println(e);}
+		return null;
+		
+		
+		
+	}
+	//비밀번호 찾기
+	public String 비밀번호찾기(String mid , String mname) {
+		String sql = "select * from member where mid = ? and mname =?";
+	try {
+		ps= con.prepareStatement(sql);
+		ps.setString(1, mid);
+		ps.setString(2, mname);
+		rs=ps.executeQuery();
+		if(rs.next()) {return rs.getString(3);}
+	}catch (Exception e) {System.out.println(e);}
+	return null;
+	
+	}
+	
 	
 	// 3. 문제출력
 		

@@ -47,14 +47,7 @@ insert into quiz value(null,'스팸통구이');
 insert into quiz value(null,'오꼬노미야끼');
 insert into quiz value(null,'아이스아메리카노');
 insert into quiz value(null,'콘푸로스트');
-insert into quiz value(null,'검은티사나이');
-insert into quiz value(null,'해적왕이될사나이');
-insert into quiz value(null,'반지의제왕');
-insert into quiz value(null,'위대한게츠비');
-insert into quiz value(null,'스타크래프트');
-insert into quiz value(null,'비트코인떡상');
-insert into quiz value(null,'꼬리칸의역습');
-insert into quiz value(null,'인디아나존스');
+
 drop table if exists score;
 create table score(
    mno int ,
@@ -70,4 +63,4 @@ select mno 회원번호 , sum(ss) 총점수 from score group by mno order by sum
 select * from score s , member m where s.mno = m.mno;
 
 select m.mnn 닉네임 , sum( s.ss ) 총점수 from score s , member m where s.mno = m.mno group by m.mnn order by sum(s.ss) desc;
-select * from quiz order by rand();  -- 이렇게 순서가 뒤죽박죽으로 출력됩니다.. 
+select * from quiz order by rand();  -- 랜덤 문제출력 

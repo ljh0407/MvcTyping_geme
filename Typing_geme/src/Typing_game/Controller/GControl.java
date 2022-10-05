@@ -53,6 +53,13 @@ public class GControl {
 		 return Typing_gameDAO.getInstance().회원탈퇴();
 	 }
 
+	 public String 아이디찾기(String mname , String pw) {
+		 return	 Typing_gameDAO.getInstance().아이디찾기(mname , pw);
+	 }
 	
 	
+	 public String 비밀번호찾기(String mid, String mname) {
+		 return Typing_gameDAO.getInstance().비밀번호찾기(mid,mname);
+	 }
+	 
 }

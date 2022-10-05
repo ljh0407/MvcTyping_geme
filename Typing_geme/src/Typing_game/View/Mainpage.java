@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
+
 import Typing_game.Controller.Control;
 import Typing_game.DTO.QuizDTO;
 import Typing_game.DTO.RangkingDTO;
@@ -26,10 +28,12 @@ public class Mainpage {
 	
 	public void 메인페이지() {
 		while(true) {
-			System.out.println("1.회원가입 2.로그인" );
+			System.out.println("1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기" );
 			int ch = scanner.nextInt();
 			if( ch== 1 ) {회원가입();}
 			if( ch== 2 ) {로그인();}
+			if( ch== 3 ) {아이디찾기();}
+			if( ch== 4 ) {비밀번호찾기();}
 			
 		}
 	}
@@ -60,7 +64,7 @@ public class Mainpage {
 			System.out.println("로그인성공");
 			mainpage();
 		}
-		if(result) {System.out.println("로그인성공");mainpage();}
+		
 
 		else {System.out.println("로그인실패");}
 		
@@ -86,17 +90,16 @@ public class Mainpage {
 	}
 	
 
-	void mainpage() {
+	public void mainpage() {
 		while (true) {
 			System.out.println("==============타자게임=============");
 
 
-			System.out.println("1.로그아웃 2.게임하기 3.랭킹순위 5.회원탈퇴");
+			System.out.println("1.로그아웃 2.게임하기 3.랭킹순위 4.회원탈퇴");
 
 			int ch = scanner.nextInt();
 			
 
-			if( ch == 1) { GControl.getInstance().setLoginMno(0); return;  }
 
 			if( ch == 1) {GControl.getInstance().setLoginMno(0);
 			System.out.println("로그아웃 되었습니다");
@@ -105,13 +108,27 @@ public class Mainpage {
 
 			else if ( ch == 2 ) {quiz();}
 			else if ( ch == 3 ) {Rangking();}
-			else if ( ch == 5) { 회원탈퇴(); return; }
+			else if ( ch == 4 ) { 회원탈퇴(); return; }
 		}
 		
 	}
 	
+	 public void 아이디찾기() {
+		System.out.println("이름 입력해주세요 :"); String mname= scanner.next();
+		System.out.println("비밀번호 입력해주세요 :"); String pw = scanner.next();
+		String 결과 = GControl.getInstance().아이디찾기(mname, pw);
+		if(결과 != null) {System.out.println("회원님의 아이디는 :" +결과);}
+		else {System.out.println("회원정보가 없습니다");}
+	}
 	
-
+	public void 비밀번호찾기() {
+		System.out.println("아이디 입력해주세요 :"); String mid = scanner.next();
+		System.out.println("이름 입력해주세요 :"); String mname = scanner.next();
+		String 결과1 =GControl.getInstance().비밀번호찾기(mid,mname);
+		if(결과1 != null) {System.out.println("회원님의 비밀번호는 :"+결과1);}
+		else {System.out.println("회원정보가 없습니다");}
+	}
+	
 	
 	
 	//  퀴즈출력
