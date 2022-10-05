@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.mysql.cj.x.protobuf.MysqlxNotice.Frame.Scope;
 
 import Typing_game.Controller.GControl;
 import Typing_game.DTO.QuizDTO;
 import Typing_game.DTO.RangkingDTO;
-
 import Typing_game.DTO.SginupDTO;
+
 
 public class Typing_gameDAO {
 
@@ -56,6 +55,34 @@ public class Typing_gameDAO {
 	}
 	
 	
+	
+	
+	// 중복체크
+	
+	public boolean idcheck( String mid) {
+		String sql = "select * from member where mid =?";
+		try {
+			ps= con.prepareStatement(sql);
+			ps.setString(1, mid);
+			rs= ps.executeQuery();
+			if( rs.next()) {return true;}
+			
+			GControl.getInstance().setLoginMno(rs.getInt(1));
+			
+		}catch (Exception e) {System.out.println(e);}
+		return false;
+	}
+	
+	public boolean 회원탈퇴() {
+		String sql = "delete from member where mno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, GControl.getInstance().getLoginMno());
+			ps.executeUpdate(); return true;
+			
+		} catch (Exception e) {System.out.println(e);}
+		return false;
+	}
 	
 	
 	// 2. 회원가입 출력
@@ -132,7 +159,7 @@ public class Typing_gameDAO {
 			ps.executeUpdate();return true;
 		} catch (Exception e) {System.out.println(e);
 		}return false;
-	}
-
+		}
+	
 }
 

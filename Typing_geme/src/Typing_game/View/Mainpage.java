@@ -30,6 +30,7 @@ public class Mainpage {
 			int ch = scanner.nextInt();
 			if( ch== 1 ) {회원가입();}
 			if( ch== 2 ) {로그인();}
+			
 		}
 	}
 	
@@ -42,10 +43,10 @@ public class Mainpage {
 		
 		SginupDTO Dto = new SginupDTO(0, mid, pw, mname, mnn);
 		
-		boolean result = GControl.getInstance().회원가입(Dto);
-		if(result) {System.out.println("회원가입 성공");}
-		else {System.out.println("회원가입 실패");}
-		
+		int result = GControl.getInstance().회원가입(Dto);
+		if(result ==1) {System.out.println("회원가입 성공");}
+		else if (result ==2){System.out.println("회원가입 실패");}
+		else if (result == 3) {System.out.println("사용중인 아이디입니다");}
 	}
 	
 	// 로그인
@@ -53,36 +54,65 @@ public class Mainpage {
 		System.out.print("아이디 : "); String mid = scanner.next();
 		System.out.print("비밀번호 :"); String pw = scanner.next();
 		
+		
 		boolean result =GControl.getInstance().로그인(mid,pw);
 		if(result) {
 			System.out.println("로그인성공");
 			mainpage();
 		}
+		if(result) {System.out.println("로그인성공");mainpage();}
+
 		else {System.out.println("로그인실패");}
 		
 		
 	}
 
+
 	
 	// 메인페이지
+	public void 회원탈퇴() {
+		System.out.println("정말 탈퇴하시겠습니까 [예/아니오]");
+		String button = scanner.next();
+		if(button.equals("예")){
+			boolean result= GControl.getInstance().회원탈퇴();
+			if(result) {
+				System.out.println("회원탈퇴 성공[로그아웃됩니다]");
+			}else {
+			System.out.println("회원실패[관리자 문의]");
+		}
+		return;
+		}
+		System.out.println("[예]입력시 탈퇴가 진행 됩니다. [탈퇴실패/로그아웃 됩니다]");
+	}
+	
+
 	void mainpage() {
 		while (true) {
 			System.out.println("==============타자게임=============");
+
 			System.out.println("1.로그아웃\t2.게임하기3.랭킹순위");
+
+			System.out.println("1.로그아웃 2.게임하기 3.랭킹순위 5.회원탈퇴");
+
 			int ch = scanner.nextInt();
 			
+
 			if( ch == 1) { GControl.getInstance().setLoginMno(0); return;  }
+
+			if( ch == 1) {GControl.getInstance().setLoginMno(0);
+			System.out.println("로그아웃 되었습니다");
+			return; }
+			
+
 			else if ( ch == 2 ) {quiz();}
 			else if ( ch == 3 ) {Rangking();}
-			
+			else if ( ch == 5) { 회원탈퇴(); return; }
 		}
 		
 	}
 	
 	
-	
-	
-	
+
 	
 	
 	//  퀴즈출력
@@ -134,10 +164,7 @@ public class Mainpage {
 //	}// for end	
 //	score -= partscore;
 			
-			
-				
-				
-				
+		 
 		
 	//랭킹순위
 	
