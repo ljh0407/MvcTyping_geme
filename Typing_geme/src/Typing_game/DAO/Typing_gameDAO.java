@@ -163,7 +163,7 @@ public class Typing_gameDAO {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				
-				rangking.put( rs.getString(1) , rs.getInt(2) );
+				rangking.put( rs.getString(1) , rs.getInt(2)  );
 				
 			}// while end
 			
@@ -175,9 +175,9 @@ public class Typing_gameDAO {
 	}
 	
 	// 5. 점수저장 
-	public boolean scoresave( int score) {
+	public boolean scoresave( int score ) {
 		
-		String sql = "insert into score values(?,?)";
+		String sql = "insert into score(mno,ss) values(?,?)";
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, GControl.getInstance().getLoginMno());
@@ -186,6 +186,24 @@ public class Typing_gameDAO {
 		} catch (Exception e) {System.out.println(e);
 		}return false;
 		}
+	
+	// 6. 내기록보기
+	public HashMap<Integer, String> playlog() {
+		HashMap<Integer, String> log = new HashMap<>();
+		String sql = "select * from score where mno = ? order by sdate desc";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, GControl.getInstance().getLoginMno() );
+			rs = ps.executeQuery();
+		while(rs.next()) {
+			log.put(rs.getInt(2), rs.getString(3));
+		}return log;
+		} catch (Exception e) {System.out.println(e);};
+		return log;
+	}
+			
+			
+	
 	
 }
 

@@ -16,12 +16,17 @@ public class Control {
 	
 	// 점수 저장 
 	public boolean scoresave( int score  ) {
-		return Typing_gameDAO.getInstance().scoresave( score);
+		return Typing_gameDAO.getInstance().scoresave( score  );
 	}
 	
 	// 랭킹 
 	public HashMap< String , Integer > Rangking( ) {
 		return Typing_gameDAO.getInstance().Rangking(  );
+	}
+	
+	// 내기록보기
+	public HashMap<Integer, String> playlog() {
+		return Typing_gameDAO.getInstance().playlog();
 	}
 	
 }
