@@ -125,7 +125,7 @@ public class Mainpage {
 	} // 퀴즈출력 end
 			
 			
-		
+		 
 		
 	//랭킹순위
 	
