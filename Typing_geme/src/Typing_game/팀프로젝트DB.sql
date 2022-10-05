@@ -57,12 +57,17 @@ insert into quiz value(null,'꼬리칸의역습');
 insert into quiz value(null,'인디아나존스');
 drop table if exists score;
 create table score(
-   mno int not null auto_increment primary key ,
+   mno int ,
    ss  tinyint not null ,
    foreign key (mno) references member(mno)
 
 );
 select * from score;
 
-select * from score where 
+select * from member where mid = '이종훈' and pw = '1234';
 
+select mno 회원번호 , sum(ss) 총점수 from score group by mno order by sum(ss) DESC;
+select * from score s , member m where s.mno = m.mno;
+
+select m.mnn 닉네임 , sum( s.ss ) 총점수 from score s , member m where s.mno = m.mno group by m.mnn order by sum(s.ss) desc;
+select * from quiz order by rand();  -- 이렇게 순서가 뒤죽박죽으로 출력됩니다.. 
